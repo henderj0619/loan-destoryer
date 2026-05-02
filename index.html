@@ -7,178 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #F7F4EF;
-    --surface: #FFFFFF;
-    --surface2: #F0EDE6;
-    --border: rgba(0,0,0,0.09);
-    --text: #1A1814;
-    --text-muted: #7A7468;
-    --text-hint: #B5AFA8;
-    --green: #0F6E56;
-    --green-light: #E1F5EE;
-    --green-mid: #1D9E75;
-    --green-dark: #085041;
-    --red: #A32D2D;
-    --accent: #D85A30;
-    --accent-light: #FAECE7;
+    --bg: #F7F4EF; --surface: #FFFFFF; --surface2: #F0EDE6;
+    --border: rgba(0,0,0,0.09); --text: #1A1814;
+    --text-muted: #7A7468; --text-hint: #B5AFA8;
+    --green: #0F6E56; --green-light: #E1F5EE; --green-mid: #1D9E75; --green-dark: #085041;
+    --red: #A32D2D; --accent: #D85A30; --accent-light: #FAECE7;
   }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    padding: 2rem 1rem 5rem;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding: 2rem 1rem 5rem; }
   .container { max-width: 640px; margin: 0 auto; }
-
-  /* Hero */
   .hero { text-align: center; margin-bottom: 2rem; }
-  .eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-  }
-  .title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(40px, 10vw, 62px);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .title { font-family: 'DM Serif Display', serif; font-size: clamp(40px, 10vw, 62px); line-height: 1; margin-bottom: 6px; }
   .title em { font-style: italic; color: var(--accent); }
   .subtitle { font-size: 13px; color: var(--text-muted); font-weight: 300; }
-
-  /* Stats */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 1.25rem;
-  }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 1.25rem; }
   @media(min-width:440px) { .stats { grid-template-columns: repeat(4,1fr); } }
-  .stat {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-  }
-  .stat-lbl {
-    font-size: 9px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 5px;
-  }
-  .stat-val {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    line-height: 1;
-  }
+  .stat { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 14px; }
+  .stat-lbl { font-size: 9px; font-family: 'DM Mono', monospace; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+  .stat-val { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1; }
   .stat-val.red { color: var(--red); }
   .stat-val.green { color: var(--green); }
-
-  /* Progress */
-  .card {
-    background: var(--surface);
-    border: 0.5px solid var(--border);
-    border-radius: 16px;
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
-  }
-  .card-hdr {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 12px;
-  }
+  .card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; }
+  .card-hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
   .card-title { font-family: 'DM Serif Display', serif; font-size: 17px; }
-  .pct-big {
-    font-family: 'DM Mono', monospace;
-    font-size: 26px;
-    font-weight: 500;
-    color: var(--green);
-  }
-  .track {
-    background: var(--surface2);
-    border-radius: 99px;
-    height: 18px;
-    overflow: hidden;
-    margin-bottom: 8px;
-  }
-  .fill {
-    height: 100%;
-    border-radius: 99px;
-    background: linear-gradient(90deg, var(--green-mid), var(--green));
-    transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
-  }
-  .track-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    font-family: 'DM Mono', monospace;
-    color: var(--text-muted);
-  }
-  .interest-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--accent-light);
-    border-radius: 8px;
-    padding: 9px 13px;
-    margin-top: 12px;
-  }
-  .int-lbl {
-    font-size: 10px;
-    font-family: 'DM Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--accent);
-  }
-  .int-val {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--accent);
-  }
-
-  /* Month grid */
-  .sec-lbl {
-    font-size: 10px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-  }
-  .months-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 10px;
-  }
+  .pct-big { font-family: 'DM Mono', monospace; font-size: 26px; font-weight: 500; color: var(--green); }
+  .track { background: var(--surface2); border-radius: 99px; height: 18px; overflow: hidden; margin-bottom: 8px; }
+  .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--green-mid), var(--green)); transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .track-meta { display: flex; justify-content: space-between; font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text-muted); }
+  .interest-row { display: flex; justify-content: space-between; align-items: center; background: var(--accent-light); border-radius: 8px; padding: 9px 13px; margin-top: 12px; }
+  .int-lbl { font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+  .int-val { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--accent); }
+  .sec-lbl { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+  .months-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px; }
   @media(min-width:440px) { .months-grid { grid-template-columns: repeat(10,1fr); } }
-
-  .mc {
-    aspect-ratio: 1;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
-    background: var(--surface2);
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    position: relative;
-  }
+  .mc { aspect-ratio: 1; border-radius: 10px; border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, background 0.2s; background: var(--surface2); user-select: none; -webkit-tap-highlight-color: transparent; position: relative; }
   .mc:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(29,158,117,0.18); border-color: var(--green-mid); }
   .mc:active { transform: scale(0.93); }
   .mc.paid { background: var(--green); border-color: var(--green-dark); }
@@ -188,58 +51,17 @@
   .mc.next .ml { color: var(--green); }
   .mn { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--text); line-height: 1; }
   .ml { font-size: 7px; font-family: 'DM Mono', monospace; color: var(--text-hint); margin-top: 2px; }
-  .mc.paid .checkmark {
-    position: absolute;
-    top: 2px; right: 4px;
-    font-size: 8px;
-    color: rgba(255,255,255,0.7);
-  }
-
-  /* Share section */
+  .checkmark { position: absolute; top: 2px; right: 4px; font-size: 8px; color: rgba(255,255,255,0.7); display: none; }
+  .mc.paid .checkmark { display: block; }
   .share-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; }
-  .share-url {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-    word-break: break-all;
-    margin-bottom: 10px;
-    min-height: 36px;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 9px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(0,0,0,0.15);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.15s;
-    background: var(--surface);
-    color: var(--text);
-    text-decoration: none;
-  }
+  .share-url { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); word-break: break-all; margin-bottom: 10px; min-height: 36px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.15); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; background: var(--surface); color: var(--text); }
   .btn:hover { background: var(--surface2); }
   .btn:active { transform: scale(0.97); }
   .btn-green { background: var(--green); color: #E1F5EE; border-color: var(--green-dark); }
   .btn-green:hover { background: var(--green-dark); }
   .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
-
-  /* Milestones */
-  .milestone {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 11px 0;
-    border-bottom: 0.5px solid var(--border);
-    transition: all 0.3s;
-  }
+  .milestone { display: flex; align-items: center; gap: 12px; padding: 11px 0; border-bottom: 0.5px solid var(--border); transition: all 0.3s; }
   .milestone:last-child { border-bottom: none; padding-bottom: 0; }
   .milestone:first-child { padding-top: 0; }
   .mi { width: 34px; height: 34px; border-radius: 50%; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; transition: all 0.3s; }
@@ -248,50 +70,16 @@
   .mtitle { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 1px; }
   .milestone.reached .mtitle { color: var(--green-dark); }
   .mdesc { font-size: 11px; color: var(--text-muted); }
-  .mbadge {
-    font-size: 9px;
-    font-family: 'DM Mono', monospace;
-    padding: 3px 8px;
-    border-radius: 99px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
+  .mbadge { font-size: 9px; font-family: 'DM Mono', monospace; padding: 3px 8px; border-radius: 99px; font-weight: 500; white-space: nowrap; }
   .mbadge.done { background: var(--green); color: #E1F5EE; }
   .mbadge.pending { background: var(--surface2); color: var(--text-muted); border: 0.5px solid var(--border); }
-
-  /* Celebration */
-  .celebration {
-    display: none;
-    text-align: center;
-    background: var(--green-light);
-    border: 1px solid var(--green-mid);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 1.25rem;
-    animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1);
-  }
+  .celebration { display: none; text-align: center; background: var(--green-light); border: 1px solid var(--green-mid); border-radius: 16px; padding: 2rem; margin-bottom: 1.25rem; animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1); }
   .celebration.show { display: block; }
   @keyframes pop { from { transform: scale(0.88); opacity:0; } to { transform: scale(1); opacity:1; } }
   .cel-title { font-family: 'DM Serif Display', serif; font-size: 30px; color: var(--green-dark); margin-bottom: 6px; }
   .cel-sub { font-size: 13px; color: var(--green); }
-
-  /* Toast */
-  .toast {
-    position: fixed;
-    bottom: 1.5rem; left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: var(--text);
-    color: #fff;
-    padding: 9px 18px;
-    border-radius: 99px;
-    font-size: 12px;
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    z-index: 999;
-    white-space: nowrap;
-    pointer-events: none;
-  }
+  .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--text); color: #fff; padding: 9px 18px; border-radius: 99px; font-size: 12px; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); z-index: 999; white-space: nowrap; pointer-events: none; }
   .toast.show { transform: translateX(-50%) translateY(0); }
-
   .footer { text-align: center; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text-hint); margin-top: 2rem; }
 </style>
 </head>
@@ -301,17 +89,17 @@
   <div class="hero">
     <p class="eyebrow">student loan payoff tracker</p>
     <h1 class="title">Loan <em>destroyer</em></h1>
-    <p class="subtitle">5.75% &nbsp;·&nbsp; $19,412.48 starting balance &nbsp;·&nbsp; $2,000/month &nbsp;·&nbsp; 10 months</p>
+    <p class="subtitle">5.75% &nbsp;·&nbsp; $19,412.00 starting balance &nbsp;·&nbsp; $2,000/month &nbsp;·&nbsp; 10 months</p>
   </div>
 
   <div class="celebration" id="cel">
     <div class="cel-title">You did it. 🏆</div>
-    <p class="cel-sub">Loan gone. $484 in interest saved. One less debt — forever.</p>
+    <p class="cel-sub">Loan gone. $513.67 in interest saved. One less debt — forever.</p>
   </div>
 
-  <div class="stats" id="stats">
-    <div class="stat"><p class="stat-lbl">remaining</p><p class="stat-val red" id="s-rem">$19,469</p></div>
-    <div class="stat"><p class="stat-lbl">eliminated</p><p class="stat-val green" id="s-elim">$0</p></div>
+  <div class="stats">
+    <div class="stat"><p class="stat-lbl">remaining</p><p class="stat-val red" id="s-rem">$19,412.00</p></div>
+    <div class="stat"><p class="stat-lbl">eliminated</p><p class="stat-val green" id="s-elim">$0.00</p></div>
     <div class="stat"><p class="stat-lbl">payments made</p><p class="stat-val" id="s-made">0 / 10</p></div>
     <div class="stat"><p class="stat-lbl">months left</p><p class="stat-val" id="s-left">10</p></div>
   </div>
@@ -322,7 +110,7 @@
       <span class="pct-big" id="pct">0%</span>
     </div>
     <div class="track"><div class="fill" id="fill" style="width:0%"></div></div>
-    <div class="track-meta"><span>$0</span><span>$9,734</span><span>$19,469</span></div>
+    <div class="track-meta"><span>$0</span><span>$9,706</span><span>$19,412</span></div>
     <div class="interest-row">
       <span class="int-lbl">interest saved so far</span>
       <span class="int-val" id="int-saved">$0.00</span>
@@ -331,8 +119,7 @@
 
   <div class="card">
     <p class="sec-lbl">tap a month to mark it paid</p>
-    <div class="months-grid" id="grid">
-      <!-- Hard-coded month cells so they always display, even without JS -->
+    <div class="months-grid">
       <div class="mc" id="m1" onclick="toggle(1)"><span class="checkmark">✓</span><span class="mn">1</span><span class="ml">May '26</span></div>
       <div class="mc" id="m2" onclick="toggle(2)"><span class="checkmark">✓</span><span class="mn">2</span><span class="ml">Jun '26</span></div>
       <div class="mc" id="m3" onclick="toggle(3)"><span class="checkmark">✓</span><span class="mn">3</span><span class="ml">Jul '26</span></div>
@@ -346,7 +133,6 @@
     </div>
   </div>
 
-  <!-- Share section: URL encodes state so both devices stay in sync -->
   <div class="share-card">
     <p class="sec-lbl">share progress with that hot ass wife of yours</p>
     <div class="share-url" id="share-url">tap "copy link" after marking payments — send it to your partner and they'll see your exact progress</div>
@@ -381,7 +167,7 @@
       </div>
       <div class="milestone" id="ms10">
         <div class="mi">🏆</div>
-        <div class="minfo"><p class="mtitle">Loan eliminated</p><p class="mdesc">Done. $484 in interest saved. Debt free.</p></div>
+        <div class="minfo"><p class="mtitle">Loan eliminated</p><p class="mdesc">Done. $513.67 in interest saved. Debt free.</p></div>
         <span class="mbadge pending" id="mb10">month 10</span>
       </div>
     </div>
@@ -393,56 +179,45 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// Amortization schedule — pre-computed, no dependencies
+// Correct amortization for $19,412.00 @ 5.75%, $2,000/month
 const SCHED = [
-  { bal: 17411.88, interest: 93.29, principal: 2056.71 },
-  { bal: 15345.31, interest: 83.43, principal: 2066.57 },
-  { bal: 13268.84, interest: 73.53, principal: 2076.47 },
-  { bal: 11182.42, interest: 63.58, principal: 2086.42 },
-  { bal:  9086.00, interest: 53.58, principal: 2096.42 },
-  { bal:  6979.54, interest: 43.54, principal: 2106.46 },
-  { bal:  4862.98, interest: 33.44, principal: 2116.56 },
-  { bal:  2736.28, interest: 23.30, principal: 2126.70 },
-  { bal:   599.39, interest: 13.11, principal: 2136.89 },
-  { bal:     0.00, interest:  2.87, principal:  599.39  },
+  { bal: 17505.02, interest: 93.02, principal: 1906.98 },
+  { bal: 15588.89, interest: 83.88, principal: 1916.12 },
+  { bal: 13663.59, interest: 74.70, principal: 1925.30 },
+  { bal: 11729.06, interest: 65.47, principal: 1934.53 },
+  { bal:  9785.26, interest: 56.20, principal: 1943.80 },
+  { bal:  7832.15, interest: 46.89, principal: 1953.11 },
+  { bal:  5869.68, interest: 37.53, principal: 1962.47 },
+  { bal:  3897.81, interest: 28.13, principal: 1971.87 },
+  { bal:  1916.48, interest: 18.68, principal: 1981.32 },
+  { bal:     0.00, interest:  9.18, principal: 1916.48 },
 ];
 
-const START = 19468.59;
-const TOTAL_INT = SCHED.reduce((s,r) => s + r.interest, 0); // ~$483.67
+const START = 19412.00;
 
-// --- State: stored in URL hash for shareability ---
 function getState() {
   try {
     const h = window.location.hash.slice(1);
     if (!h) return {};
-    const decoded = atob(h);
-    return JSON.parse(decoded);
+    return JSON.parse(atob(h));
   } catch(e) { return {}; }
 }
 
 function setState(s) {
-  try {
-    const encoded = btoa(JSON.stringify(s));
-    window.history.replaceState(null, '', '#' + encoded);
-  } catch(e) {}
+  try { window.history.replaceState(null, '', '#' + btoa(JSON.stringify(s))); } catch(e) {}
 }
 
 let state = getState();
 
-// Also persist to localStorage as backup
 function save() {
   setState(state);
-  try { localStorage.setItem('ld_backup', JSON.stringify(state)); } catch(e) {}
+  try { localStorage.setItem('ld_v3', JSON.stringify(state)); } catch(e) {}
 }
 
-// On load, prefer URL state, fall back to localStorage
 function loadInitial() {
   const fromURL = getState();
   if (Object.keys(fromURL).length > 0) { state = fromURL; return; }
-  try {
-    const ls = localStorage.getItem('ld_backup');
-    if (ls) state = JSON.parse(ls);
-  } catch(e) {}
+  try { const ls = localStorage.getItem('ld_v3'); if (ls) state = JSON.parse(ls); } catch(e) {}
 }
 
 function getPaid() {
@@ -469,18 +244,14 @@ function render() {
   const intSaved = paid.reduce((s, m) => s + SCHED[m-1].interest, 0);
   const allDone = remaining <= 0 && paid.length >= 10;
 
-  // Stats
   document.getElementById('s-rem').textContent = fmt(remaining);
   document.getElementById('s-elim').textContent = fmt(eliminated);
   document.getElementById('s-made').textContent = paid.length + ' / 10';
   document.getElementById('s-left').textContent = Math.max(10 - paid.length, 0);
-
-  // Progress bar
   document.getElementById('pct').textContent = Math.round(pct) + '%';
   document.getElementById('fill').style.width = pct + '%';
   document.getElementById('int-saved').textContent = fmt(intSaved);
 
-  // Month cells
   for (let i = 1; i <= 10; i++) {
     const el = document.getElementById('m' + i);
     const isPaid = state[i];
@@ -488,30 +259,20 @@ function render() {
     el.className = 'mc' + (isPaid ? ' paid' : '') + (isNext ? ' next' : '');
   }
 
-  // Milestones
-  const msCriteria = { ms1: 1, ms3: 3, ms5: 5, ms7: 7, ms10: 10 };
-  const mbCriteria = { mb1: 1, mb3: 3, mb5: 5, mb7: 7, mb10: 10 };
-  for (const [id, threshold] of Object.entries(msCriteria)) {
-    const el = document.getElementById(id);
-    if (paid.length >= threshold) el.classList.add('reached');
-    else el.classList.remove('reached');
+  const msCriteria = { ms1:1, ms3:3, ms5:5, ms7:7, ms10:10 };
+  const mbCriteria = { mb1:1, mb3:3, mb5:5, mb7:7, mb10:10 };
+  for (const [id, t] of Object.entries(msCriteria)) {
+    document.getElementById(id).classList.toggle('reached', paid.length >= t);
   }
-  for (const [id, threshold] of Object.entries(mbCriteria)) {
+  for (const [id, t] of Object.entries(mbCriteria)) {
     const el = document.getElementById(id);
-    if (paid.length >= threshold) {
-      el.textContent = 'done';
-      el.className = 'mbadge done';
-    } else {
-      el.textContent = 'month ' + threshold;
-      el.className = 'mbadge pending';
-    }
+    if (paid.length >= t) { el.textContent = 'done'; el.className = 'mbadge done'; }
+    else { el.textContent = 'month ' + t; el.className = 'mbadge pending'; }
   }
 
-  // Celebration
   document.getElementById('cel').classList.toggle('show', allDone);
 
-  // Share URL
-  const url = window.location.href.split('#')[0] + (window.location.hash || '');
+  const url = window.location.href;
   document.getElementById('share-url').textContent = url.length > 80 ? url.slice(0, 77) + '...' : url;
 }
 
@@ -520,8 +281,7 @@ function toggle(month) {
   save();
   render();
   if (state[month]) {
-    const s = SCHED[month - 1];
-    showToast('Month ' + month + ' paid · $' + s.principal.toFixed(0) + ' knocked off the balance');
+    showToast('Month ' + month + ' paid · $' + SCHED[month-1].principal.toFixed(0) + ' knocked off');
   }
 }
 
@@ -530,13 +290,9 @@ function copyLink() {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(url).then(() => showToast('Link copied — send it to your partner!'));
   } else {
-    // Fallback for older mobile browsers
     const ta = document.createElement('textarea');
-    ta.value = url;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.focus(); ta.select();
+    ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
     try { document.execCommand('copy'); showToast('Link copied!'); }
     catch(e) { showToast('Copy the URL from your browser bar'); }
     document.body.removeChild(ta);
@@ -545,8 +301,7 @@ function copyLink() {
 
 function resetAll() {
   if (confirm('Reset all progress?')) {
-    state = {};
-    save();
+    state = {}; save();
     window.history.replaceState(null, '', window.location.pathname);
     render();
     showToast('Reset — fresh start!');
